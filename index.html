@@ -5,8 +5,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mộc Trầu – Nature Skincare</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&family=DM+Serif+Display:ital@0;1&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500&family=DM+Sans:wght@300;400;500&family=DM+Serif+Display:ital@0;1&subset=vietnamese&display=swap"
     rel="stylesheet">
   <style>
     :root {
@@ -34,13 +36,15 @@
     }
 
     body {
-      font-family: 'DM Sans', sans-serif;
+      font-family: 'Inter', 'DM Sans', sans-serif;
       font-weight: 400;
       background: var(--white);
       color: var(--text-dark);
       overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
+      font-synthesis: none;
+      text-rendering: optimizeLegibility;
     }
 
     /* ── NAV ── */
@@ -48,12 +52,13 @@
       position: fixed;
       top: 0;
       width: 100%;
+      height: 90px;
       z-index: 100;
-      padding: 18px 60px;
+      padding: 0 60px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      background: rgba(254, 252, 248, 0.92);
+      background: rgba(254, 252, 248, 0.94);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid rgba(184, 150, 62, 0.15);
       transition: all 0.3s;
@@ -66,14 +71,14 @@
     }
 
     .logo-emblem {
-      width: 110px;
-      height: 110px;
+      width: 82px;
+      height: 82px;
       border-radius: 50%;
       overflow: hidden;
       flex-shrink: 0;
       background: url('images/logo.jpg') center 47% / 132% auto no-repeat;
       transition: transform 0.4s ease;
-      box-shadow: 0 2px 16px rgba(58, 107, 53, 0.22);
+      box-shadow: 0 2px 12px rgba(58, 107, 53, 0.18);
       filter: contrast(1.08) saturate(1.12);
       image-rendering: -webkit-optimize-contrast;
     }
@@ -82,20 +87,22 @@
       transform: rotate(8deg) scale(1.06);
     }
 
+
+
     .nav-links {
       display: flex;
-      gap: 36px;
+      gap: 42px;
       list-style: none;
     }
 
     .nav-links a {
       font-family: 'DM Sans', sans-serif;
-      font-size: 11.5px;
-      letter-spacing: 2.5px;
+      font-size: 12.5px;
+      letter-spacing: 2px;
       text-transform: uppercase;
       color: var(--text-dark);
       text-decoration: none;
-      font-weight: 400;
+      font-weight: 500;
       transition: color 0.3s;
     }
 
@@ -106,11 +113,11 @@
     .nav-cta {
       background: var(--green-deep);
       color: var(--cream) !important;
-      padding: 10px 24px;
-      border-radius: 2px;
-      letter-spacing: 2.5px;
-      font-size: 10.5px !important;
-      font-weight: 500 !important;
+      padding: 12px 28px;
+      border-radius: 4px;
+      letter-spacing: 2px;
+      font-size: 11.5px !important;
+      font-weight: 600 !important;
       transition: background 0.3s !important;
     }
 
@@ -122,37 +129,66 @@
     /* ── HERO ── */
     .hero {
       min-height: 100vh;
-      background: linear-gradient(165deg, var(--green-deep) 0%, #1e4530 40%, #2d5a3d 70%, #3a6b4a 100%);
-      position: relative;
+      display: grid;
+      grid-template-columns: 55% 45%;
       overflow: hidden;
-      display: flex;
-      align-items: center;
-      padding: 120px 60px 80px;
+      position: relative;
     }
 
     .hero-bg-pattern {
-      position: absolute;
-      inset: 0;
-      opacity: 0.06;
-      background-image: radial-gradient(circle at 20% 50%, var(--gold) 1px, transparent 1px),
-        radial-gradient(circle at 80% 20%, var(--gold) 1px, transparent 1px),
-        radial-gradient(circle at 60% 80%, var(--gold) 1px, transparent 1px);
-      background-size: 80px 80px, 120px 120px, 60px 60px;
+      display: none;
     }
 
-    .hero-leaf-bg {
-      position: absolute;
-      right: -60px;
-      top: 50%;
-      transform: translateY(-50%);
-      opacity: 0.08;
-      pointer-events: none;
+    /* LEFT: full-bleed image column */
+    .hero-visual {
+      position: relative;
+      overflow: hidden;
+      min-height: 100vh;
     }
 
+    .hero-visual-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+      display: block;
+    }
+
+    /* Overlay badge on image (like Cocoon's circle promo) */
+    .hero-img-badge {
+      position: absolute;
+      bottom: 40px;
+      left: 40px;
+      background: var(--gold);
+      color: var(--white);
+      border-radius: 50%;
+      width: 100px;
+      height: 100px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-align: center;
+      text-transform: uppercase;
+      line-height: 1.3;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+      animation: float 4s ease-in-out infinite;
+      z-index: 2;
+    }
+
+    /* RIGHT: text column */
     .hero-content {
       position: relative;
       z-index: 2;
-      max-width: 560px;
+      background: linear-gradient(160deg, #0f2619 0%, #1e4530 50%, #2d5a3d 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 80px 64px 80px 56px;
+      max-width: none;
     }
 
     .hero-badge {
@@ -162,7 +198,7 @@
       border: 1px solid rgba(184, 150, 62, 0.5);
       padding: 6px 16px;
       border-radius: 20px;
-      margin-bottom: 28px;
+      margin-bottom: 24px;
       animation: fadeUp 0.8s ease both;
     }
 
@@ -183,17 +219,29 @@
 
     .hero h1 {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(52px, 7vw, 88px);
+      font-size: clamp(48px, 5.5vw, 82px);
       font-weight: 400;
-      line-height: 1.0;
+      line-height: 1.08;
       color: var(--white);
       animation: fadeUp 0.8s 0.1s ease both;
+      margin-bottom: 0;
     }
 
     .hero h1 em {
       font-style: italic;
       color: var(--gold-light);
       display: block;
+    }
+
+    .hero-tu {
+      font-size: 0.42em;
+      font-weight: 300;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      opacity: 0.6;
+      display: block;
+      margin-bottom: -0.05em;
+      font-family: 'Inter', sans-serif;
     }
 
     .hero-desc {
@@ -274,15 +322,7 @@
       text-transform: uppercase;
     }
 
-    .hero-visual {
-      position: absolute;
-      right: 0;
-      top: 0;
-      bottom: 0;
-      width: 50%;
-      pointer-events: none;
-      overflow: hidden;
-    }
+    /* hero-visual is now a grid item — see HERO VIsuAL ELEMENTS section below */
 
     .hero-circle {
       position: absolute;
@@ -351,6 +391,22 @@
       overflow: hidden;
       white-space: nowrap;
     }
+
+    /* ── HERO VIsuAL ELEMENTS (legacy — kept for fallback) ── */
+    .hero-glow,
+    .hero-ring,
+    .hero-ring-2,
+    .hero-bottle,
+    .hero-product-card,
+    .hero-ingredient-badge,
+    .hero-rating-pill,
+    .hero-botanical,
+    .hero-circle,
+    .hero-circle-2,
+    .hero-circle-3 {
+      display: none;
+    }
+
 
     .strip-inner {
       display: inline-flex;
@@ -437,66 +493,205 @@
     }
 
     .feat {
-      padding: 20px;
+      padding: 24px;
       border: 1px solid var(--cream-dark);
-      border-radius: 4px;
+      border-radius: 8px;
       background: var(--cream);
-      transition: all 0.3s;
+      transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
 
     .feat:hover {
       border-color: var(--gold-light);
-      transform: translateY(-2px);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(184, 150, 62, 0.12);
+      background: var(--white);
     }
 
     .feat-icon {
-      font-size: 24px;
-      margin-bottom: 10px;
+      font-size: 28px;
+      margin-bottom: 12px;
     }
 
     .feat-title {
-      font-size: 13px;
-      font-weight: 500;
+      font-size: 15px;
+      font-weight: 600;
       color: var(--green-deep);
-      margin-bottom: 4px;
+      margin-bottom: 7px;
+      letter-spacing: 0.2px;
     }
 
     .feat-desc {
-      font-size: 12px;
+      font-size: 13.5px;
       color: var(--text-mid);
-      line-height: 1.6;
+      line-height: 1.65;
     }
 
     .philosophy-visual {
       position: relative;
-      height: 500px;
+      height: 480px;
+      border-radius: 20px;
+      overflow: visible;
+    }
+
+    /* Betel garden photo background */
+    .philosophy-visual-bg {
+      position: absolute;
+      inset: -20px -20px -20px 20px;
+      border-radius: 20px;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    /* Card hover shimmer effect */
+    .philo-card {
+      position: absolute;
+      border-radius: 16px;
+      overflow: hidden;
+      z-index: 2;
+      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease;
+    }
+
+    .philo-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      z-index: 5;
+    }
+
+    /* Shimmer overlay on hover */
+    .philo-card::before {
+      content: '';
+      position: absolute;
+      top: -60%;
+      left: -60%;
+      width: 50%;
+      height: 180%;
+      background: linear-gradient(105deg, transparent 0%, rgba(255, 255, 255, 0.18) 50%, transparent 100%);
+      transform: skewX(-20deg);
+      transition: left 0.6s ease;
+      z-index: 10;
+      pointer-events: none;
+    }
+
+    .philo-card:hover::before {
+      left: 160%;
+    }
+
+    /* sunlight rays filtering through leaves */
+    .philosophy-visual-bg::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 65% 0%, rgba(200, 230, 160, 0.22) 0%, transparent 45%),
+        radial-gradient(ellipse at 30% 5%, rgba(180, 220, 130, 0.14) 0%, transparent 35%),
+        radial-gradient(ellipse at 80% 15%, rgba(220, 240, 170, 0.1) 0%, transparent 28%),
+        radial-gradient(ellipse at 50% 90%, rgba(10, 40, 18, 0.6) 0%, transparent 55%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* Light rays (crepuscular rays) */
+    .philosophy-visual-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(175deg, rgba(180, 230, 140, 0.08) 0%, transparent 40%),
+        linear-gradient(168deg, rgba(160, 220, 120, 0.06) 0%, transparent 35%),
+        linear-gradient(182deg, rgba(200, 240, 160, 0.05) 0%, transparent 42%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* Floating light specks (bokeh) */
+    .philo-bokeh {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 2;
+      filter: blur(2px);
+    }
+
+    .philo-bokeh:nth-child(5) {
+      width: 18px;
+      height: 18px;
+      background: rgba(200, 240, 150, 0.18);
+      top: 8%;
+      left: 60%;
+      animation: float 7s ease-in-out infinite;
+    }
+
+    .philo-bokeh:nth-child(6) {
+      width: 12px;
+      height: 12px;
+      background: rgba(220, 255, 170, 0.14);
+      top: 22%;
+      left: 40%;
+      animation: float 9s ease-in-out 2s infinite;
+    }
+
+    .philo-bokeh:nth-child(7) {
+      width: 8px;
+      height: 8px;
+      background: rgba(180, 230, 130, 0.2);
+      top: 55%;
+      left: 72%;
+      animation: float 6s ease-in-out 1s infinite;
+    }
+
+    .philo-bokeh:nth-child(8) {
+      width: 22px;
+      height: 22px;
+      background: rgba(160, 220, 110, 0.1);
+      top: 75%;
+      left: 20%;
+      animation: float 11s ease-in-out 4s infinite;
+    }
+
+    .philo-bokeh:nth-child(9) {
+      width: 10px;
+      height: 10px;
+      background: rgba(240, 255, 200, 0.16);
+      top: 40%;
+      left: 85%;
+      animation: float 8s ease-in-out 3s infinite;
+    }
+
+    .philo-bokeh:nth-child(10) {
+      width: 6px;
+      height: 6px;
+      background: rgba(200, 250, 160, 0.25);
+      top: 15%;
+      left: 80%;
+      animation: float 5s ease-in-out 1.5s infinite;
     }
 
     .philo-card {
       position: absolute;
-      background: var(--green-deep);
-      border-radius: 6px;
+      border-radius: 16px;
       overflow: hidden;
+      z-index: 2;
     }
 
     .philo-card-1 {
-      width: 280px;
-      height: 360px;
-      top: 0;
-      left: 0;
+      width: 240px;
+      height: 300px;
+      top: 30px;
+      left: 30px;
+      box-shadow:
+        0 24px 60px rgba(0, 0, 0, 0.45),
+        0 0 0 1px rgba(184, 150, 62, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.06);
     }
 
     .philo-card-2 {
-      width: 200px;
-      height: 260px;
-      bottom: 0;
-      right: 0;
-    }
-
-    .philo-card svg {
-      width: 100%;
-      height: 100%;
-      opacity: 0.3;
+      width: 175px;
+      height: 225px;
+      bottom: 30px;
+      right: 30px;
+      box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.45),
+        0 0 0 1px rgba(184, 150, 62, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.06);
     }
 
     .philo-inner {
@@ -505,23 +700,50 @@
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
-      padding: 24px;
-      background: linear-gradient(to top, rgba(26, 58, 42, 0.9) 0%, transparent 50%);
+      padding: 22px;
+      background: linear-gradient(to top, rgba(15, 38, 25, 0.95) 0%, rgba(15, 38, 25, 0.4) 45%, transparent 70%);
     }
 
     .philo-tag {
-      font-size: 10px;
-      letter-spacing: 2px;
+      font-size: 9px;
+      letter-spacing: 3px;
       text-transform: uppercase;
       color: var(--gold-light);
-      margin-bottom: 6px;
+      margin-bottom: 5px;
+      opacity: 0.9;
     }
 
     .philo-title {
       font-family: 'Playfair Display', serif;
-      font-size: 20px;
+      font-size: 21px;
       color: white;
       font-weight: 400;
+      text-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Decorative corner accent on cards */
+    .philo-card::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(184, 150, 62, 0.5), transparent);
+      z-index: 4;
+    }
+
+    /* Badge ring */
+    .philo-badge-ring {
+      position: absolute;
+      top: -37px;
+      right: 23px;
+      width: 134px;
+      height: 134px;
+      border-radius: 50%;
+      border: 1px solid rgba(184, 150, 62, 0.25);
+      z-index: 2;
+      animation: spin 20s linear infinite;
     }
 
     .philo-badge {
@@ -530,14 +752,17 @@
       right: 40px;
       width: 100px;
       height: 100px;
-      background: var(--gold);
+      background: radial-gradient(circle at 35% 35%, #d4af6a 0%, #b8963e 50%, #8a6e2a 100%);
       border-radius: 50%;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       z-index: 3;
-      box-shadow: 0 8px 30px rgba(184, 150, 62, 0.4);
+      box-shadow:
+        0 8px 32px rgba(184, 150, 62, 0.5),
+        0 0 0 2px rgba(184, 150, 62, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.25);
       animation: pulse 3s ease-in-out infinite;
     }
 
@@ -545,7 +770,7 @@
       font-size: 9px;
       letter-spacing: 1px;
       text-align: center;
-      color: white;
+      color: rgba(255, 255, 255, 0.9);
       line-height: 1.4;
       font-weight: 300;
     }
@@ -554,7 +779,8 @@
       font-family: 'Playfair Display', serif;
       font-size: 22px;
       color: white;
-      font-weight: 400;
+      font-weight: 500;
+      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
     }
 
     /* ── PRODUCTS ── */
@@ -565,7 +791,7 @@
 
     .products-header {
       text-align: center;
-      margin-bottom: 60px;
+      margin-bottom: 24px;
     }
 
     .products-header h2 {
@@ -577,10 +803,44 @@
     }
 
     .products-header p {
-      font-size: 14px;
+      font-size: 15px;
       color: var(--text-mid);
-      letter-spacing: 0.5px;
+      margin-top: 12px;
       font-weight: 300;
+    }
+
+    /* ── CATEGORY FILTERS ── */
+    .product-filters {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      background: none;
+      border: 1px solid rgba(58, 107, 53, 0.2);
+      padding: 8px 20px;
+      border-radius: 30px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-mid);
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .filter-btn:hover {
+      border-color: var(--green-deep);
+      color: var(--green-deep);
+    }
+
+    .filter-btn.active {
+      background: var(--green-deep);
+      border-color: var(--green-deep);
+      color: var(--white);
     }
 
     .products-grid {
@@ -589,6 +849,7 @@
       gap: 24px;
       max-width: 1200px;
       margin: 0 auto;
+      margin-bottom: 60px;
     }
 
     .product-card {
@@ -610,23 +871,23 @@
     }
 
     .product-img {
-      height: 280px;
       position: relative;
-      overflow: hidden;
+      height: 340px;
       display: flex;
       align-items: center;
       justify-content: center;
+      overflow: hidden;
     }
 
     .product-img img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.6s;
+      transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
     }
 
     .product-card:hover .product-img img {
-      transform: scale(1.05);
+      transform: scale(1.08);
     }
 
     .product-tag {
@@ -640,6 +901,7 @@
       text-transform: uppercase;
       padding: 4px 12px;
       border-radius: 2px;
+      z-index: 2;
     }
 
     .product-info {
@@ -723,10 +985,6 @@
     /* featured product wide */
     .product-card.featured {
       grid-column: span 2;
-    }
-
-    .product-card.featured .product-img {
-      height: 340px;
     }
 
     /* ── INGREDIENTS ── */
@@ -908,7 +1166,7 @@
       box-shadow: 0 0 30px rgba(184, 150, 62, 0.25);
     }
 
-    /* Subtle top-left glow on hover */
+    /* subtle top-left glow on hover */
     .ing-item:not(.star)::before {
       content: '';
       position: absolute;
@@ -1571,8 +1829,8 @@
     /* Scroll reveal */
     .reveal {
       opacity: 0;
-      transform: translateY(30px);
-      transition: all 0.7s;
+      transform: translateY(40px);
+      transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
     }
 
     .reveal.visible {
@@ -2486,6 +2744,7 @@
       border-radius: 20px;
       box-shadow: 0 4px 12px rgba(232, 41, 59, 0.45);
       animation: pulseBadge 2s ease-in-out infinite;
+      z-index: 2;
     }
 
     .price-old {
@@ -2779,16 +3038,24 @@
         padding: 14px 30px;
       }
 
+      /* HERO — tablet: narrower image column */
       .hero {
-        padding: 100px 30px 60px;
+        grid-template-columns: 48% 52%;
+        min-height: 100vh;
       }
 
       .hero-visual {
-        display: none;
+        display: block;
+        min-height: 100vh;
       }
 
       .hero-content {
-        max-width: 100%;
+        padding: 60px 40px;
+        max-width: none;
+      }
+
+      .hero h1 {
+        font-size: clamp(38px, 5vw, 62px);
       }
 
       .philosophy {
@@ -2922,14 +3189,27 @@
         height: 70px;
       }
 
-      /* HERO */
+      /* HERO — mobile: image top, text bottom */
       .hero {
-        padding: 140px 20px 60px;
+        grid-template-columns: 1fr;
+        grid-template-rows: 70vw auto;
         min-height: auto;
       }
 
+      .hero-visual {
+        display: block;
+        min-height: 70vw;
+        height: 70vw;
+        order: 1;
+      }
+
+      .hero-content {
+        order: 2;
+        padding: 40px 24px 48px;
+      }
+
       .hero h1 {
-        font-size: clamp(38px, 10vw, 56px);
+        font-size: clamp(36px, 9vw, 52px);
       }
 
       .hero-desc {
@@ -3014,10 +3294,6 @@
 
       .product-card.featured {
         grid-column: span 1;
-      }
-
-      .product-card.featured .product-img {
-        height: 260px;
       }
 
       .product-img {
@@ -3422,13 +3698,20 @@
 
   <!-- HERO -->
   <section class="hero">
-    <div class="hero-bg-pattern"></div>
+    <!-- LEFT: Full-bleed product image -->
+    <div class="hero-visual">
+      <img class="hero-visual-img" src="images/z7796173775557_c56f30f6afef167b21aec95a61f9487a.jpg"
+        alt="Mộc Trầu Botanical Skincare">
+      <div class="hero-img-badge">100%<br>Thiên<br>Nhiên</div>
+    </div>
+
+    <!-- RIGHT: Text content -->
     <div class="hero-content">
       <div class="hero-badge">
         <div class="hero-badge-dot"></div>
-        <span>100% Thiên Nhiên · Chiết Xuất Lá Trầu Không</span>
+        <span>Chiết Xuất Lá Trầu Không</span>
       </div>
-      <h1>Vẻ Đẹp<br>Từ <em>Thiên Nhiên</em></h1>
+      <h1>Vẻ Đẹp<span class="hero-tu">Từ</span><em>Thiên Nhiên</em></h1>
       <p class="hero-desc">Mộc Trầu mang đến dòng skincare thuần tự nhiên được chiết xuất từ lá trầu không – loại thảo
         dược quý trong dân gian Việt Nam, kết hợp công nghệ hiện đại để chăm sóc làn da toàn diện.</p>
       <div class="hero-btns">
@@ -3448,31 +3731,6 @@
           <div class="stat-num">5K+</div>
           <div class="stat-label">Khách hàng</div>
         </div>
-      </div>
-    </div>
-    <div class="hero-visual">
-      <div class="hero-circle"></div>
-      <div class="hero-circle-2"></div>
-      <div class="hero-circle-3"></div>
-      <!-- Floating leaves -->
-      <div class="floating-leaf" style="right:220px;top:18%">
-        <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
-          <path d="M30 5 C15 10 8 22 10 35 C12 48 22 55 30 55 C38 55 48 48 50 35 C52 22 45 10 30 5Z" fill="#4a7c5f"
-            opacity="0.6" />
-          <path d="M30 5 C30 5 28 20 28 30 C28 40 29 52 30 55" stroke="#a8c5a0" stroke-width="1.5" fill="none" />
-        </svg>
-      </div>
-      <div class="floating-leaf" style="right:90px;top:42%;animation-delay:2s">
-        <svg width="44" height="44" viewBox="0 0 60 60" fill="none">
-          <path d="M30 5 C15 10 8 22 10 35 C12 48 22 55 30 55 C38 55 48 48 50 35 C52 22 45 10 30 5Z" fill="#2d5a3d"
-            opacity="0.5" />
-        </svg>
-      </div>
-      <div class="floating-leaf" style="right:300px;top:68%;animation-delay:4s">
-        <svg width="36" height="36" viewBox="0 0 60 60" fill="none">
-          <path d="M30 5 C15 10 8 22 10 35 C12 48 22 55 30 55 C38 55 48 48 50 35 C52 22 45 10 30 5Z" fill="#4a7c5f"
-            opacity="0.4" />
-        </svg>
       </div>
     </div>
   </section>
@@ -3553,50 +3811,170 @@
         </div>
       </div>
     </div>
+
+    <!-- PHILOSOPHY VIsuAL: Vườn trầu thực tế -->
     <div class="philosophy-visual reveal">
-      <div class="philo-card philo-card-1">
+
+      <!-- Background: ảnh vườn lá trầu thực tế -->
+      <div class="philosophy-visual-bg">
+        <img src="images/betel_garden_bg.png" alt="Vườn lá trầu xanh mướt"
+          style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;z-index:1;">
+        <!-- Overlay mờ nhẹ để card nổi bật -->
+        <div style="position:absolute;inset:0;z-index:2;
+          background:
+            linear-gradient(145deg, rgba(5,18,9,0.38) 0%, rgba(8,25,14,0.22) 50%, rgba(5,16,8,0.35) 100%);
+        "></div>
+      </div>
+
+      <!-- Card 1: Nguyên Liệu Chính Lá Trầu Không - glass / no bg -->
+      <div class="philo-card philo-card-1"
+        style="backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);background:rgba(10,30,16,0.35);border:1px solid rgba(184,150,62,0.28);box-shadow:0 24px 60px rgba(0,0,0,0.35),0 0 0 1px rgba(184,150,62,0.12),inset 0 1px 0 rgba(255,255,255,0.08);">
+        <!-- subtle glow overlay -->
         <div
-          style="background: linear-gradient(135deg, #1a3a2a 0%, #2d5a3d 100%); width:100%;height:100%; display:flex;align-items:center;justify-content:center;">
-          <svg viewBox="0 0 200 300" fill="none" style="width:160px;opacity:0.5">
-            <path d="M100 20 C55 40 30 80 35 130 C40 180 70 220 100 240 C130 220 160 180 165 130 C170 80 145 40 100 20Z"
-              fill="#4a7c5f" />
-            <path d="M100 20 C100 20 90 70 88 110 C86 150 90 210 100 240" stroke="#b8963e" stroke-width="2"
-              fill="none" />
-            <path d="M88 110 C70 100 55 95 45 100" stroke="#a8c5a0" stroke-width="1.5" fill="none" />
-            <path d="M90 140 C72 135 58 132 48 135" stroke="#a8c5a0" stroke-width="1.5" fill="none" />
-            <path d="M92 170 C76 168 63 167 55 170" stroke="#a8c5a0" stroke-width="1.5" fill="none" />
-            <path d="M88 110 C106 100 120 95 130 100" stroke="#a8c5a0" stroke-width="1.5" fill="none" />
-            <path d="M90 140 C108 135 122 132 132 135" stroke="#a8c5a0" stroke-width="1.5" fill="none" />
-          </svg>
+          style="position:absolute;inset:0;background:radial-gradient(ellipse at 30% 25%, rgba(184,150,62,0.12) 0%, transparent 55%),radial-gradient(ellipse at 80% 80%, rgba(74,124,95,0.15) 0%, transparent 50%);pointer-events:none;">
         </div>
-        <div class="philo-inner">
-          <div class="philo-tag">Nguyên liệu chính</div>
-          <div class="philo-title">Lá Trầu Không</div>
+        <!-- Decorative rings -->
+        <div
+          style="position:absolute;width:200px;height:200px;border-radius:50%;border:1px solid rgba(184,150,62,0.2);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;">
+        </div>
+        <div
+          style="position:absolute;width:248px;height:248px;border-radius:50%;border:1px solid rgba(184,150,62,0.1);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;">
+        </div>
+        <!-- Text content centered -->
+        <div style="position:relative;z-index:2;text-align:center;padding:24px;">
+          <div
+            style="font-size:9.5px;letter-spacing:3.5px;text-transform:uppercase;color:var(--gold-light);margin-bottom:16px;opacity:0.9;">
+            Nguyên Liệu Chính</div>
+          <div
+            style="width:36px;height:1px;background:linear-gradient(to right,transparent,rgba(184,150,62,0.8),transparent);margin:0 auto 16px;">
+          </div>
+          <div
+            style="font-family:'Playfair Display',serif;font-size:28px;color:white;font-weight:400;line-height:1.2;text-shadow:0 2px 16px rgba(0,0,0,0.6);letter-spacing:0.5px;">
+            Lá Trầu
+            <br><em style="font-style:italic;color:var(--gold-light);font-size:0.88em;">Không</em>
+          </div>
+          <div
+            style="width:36px;height:1px;background:linear-gradient(to right,transparent,rgba(184,150,62,0.8),transparent);margin:18px auto 0;">
+          </div>
+          <div style="margin-top:14px;display:flex;gap:14px;justify-content:center;">
+            <div style="text-align:center;">
+              <div
+                style="font-family:'Playfair Display',serif;font-size:20px;color:var(--gold-light);text-shadow:0 2px 8px rgba(0,0,0,0.4);">
+                94%</div>
+              <div
+                style="font-size:9px;letter-spacing:1.5px;color:rgba(255,255,255,0.55);text-transform:uppercase;margin-top:3px;">
+                Kháng khuẩn</div>
+            </div>
+            <div style="width:1px;background:rgba(255,255,255,0.2);"></div>
+            <div style="text-align:center;">
+              <div
+                style="font-family:'Playfair Display',serif;font-size:20px;color:var(--gold-light);text-shadow:0 2px 8px rgba(0,0,0,0.4);">
+                100%</div>
+              <div
+                style="font-size:9px;letter-spacing:1.5px;color:rgba(255,255,255,0.55);text-transform:uppercase;margin-top:3px;">
+                Tự nhiên</div>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="philo-badge" style="animation: pulseBadge 3s ease-in-out infinite;">
+
+      <!-- Badge ring decoration -->
+      <div class="philo-badge-ring"></div>
+
+      <!-- Badge -->
+      <div class="philo-badge">
         <strong>100%</strong>
         <span>Thiên<br>Nhiên</span>
       </div>
-      <div class="philo-card philo-card-2">
+
+      <!-- Card 2: Cao Cấp - glass + beautiful star -->
+      <div class="philo-card philo-card-2"
+        style="backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);background:rgba(140,100,20,0.25);border:1px solid rgba(184,150,62,0.4);box-shadow:0 20px 50px rgba(0,0,0,0.35),0 0 0 1px rgba(184,150,62,0.15),inset 0 1px 0 rgba(255,215,100,0.12);">
+        <!-- Gold glow overlay -->
         <div
-          style="background: linear-gradient(135deg, #b8963e 0%, #8a6e2a 100%); width:100%;height:100%; display:flex;align-items:center;justify-content:center;">
-          <svg viewBox="0 0 140 180" fill="none" style="width:100px;opacity:0.5">
-            <circle cx="70" cy="90" r="60" stroke="#fff" stroke-width="1.5" fill="none" />
-            <circle cx="70" cy="90" r="40" stroke="#fff" stroke-width="1" fill="rgba(255,255,255,0.1)"
-              stroke-dasharray="4 4" />
-            <path d="M70 30 L90 70 L130 70 L100 95 L110 135 L70 110 L30 135 L40 95 L10 70 L50 70 Z"
-              fill="rgba(255,255,255,0.15)" stroke="#fff" stroke-width="1" />
+          style="position:absolute;inset:0;background:radial-gradient(ellipse at 40% 30%, rgba(212,175,106,0.22) 0%, transparent 60%),radial-gradient(ellipse at 70% 80%, rgba(0,0,0,0.15) 0%, transparent 50%);pointer-events:none;">
+        </div>
+
+        <!-- Beautiful star emblem centered -->
+        <div
+          style="position:absolute;top:0;left:0;right:0;bottom:60px;display:flex;align-items:center;justify-content:center;">
+          <svg viewBox="0 0 140 140" fill="none" xmlns="http://www.w3.org/2000/svg"
+            style="width:105px;filter:drop-shadow(0 0 16px rgba(212,175,80,0.55)) drop-shadow(0 4px 12px rgba(0,0,0,0.4));">
+            <defs>
+              <radialGradient id="sg1" cx="38%" cy="28%" r="65%">
+                <stop offset="0%" stop-color="#fff8d6" />
+                <stop offset="30%" stop-color="#f0c84a" />
+                <stop offset="65%" stop-color="#c9922a" />
+                <stop offset="100%" stop-color="#8a5f10" />
+              </radialGradient>
+              <radialGradient id="sg2" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="rgba(255,240,160,0.5)" />
+                <stop offset="100%" stop-color="rgba(255,200,60,0)" />
+              </radialGradient>
+              <filter id="starGlow">
+                <feGaussianBlur stdDeviation="2.5" result="blur" />
+                <feComposite in="SourceGraphic" in2="blur" operator="over" />
+              </filter>
+            </defs>
+
+            <!-- Outer pulse ring (animated via CSS) -->
+            <circle cx="70" cy="70" r="66" stroke="rgba(212,175,80,0.18)" stroke-width="1" fill="none" />
+            <!-- Dashed ring -->
+            <circle cx="70" cy="70" r="60" stroke="rgba(212,175,80,0.28)" stroke-width="0.8" fill="none"
+              stroke-dasharray="4 6" />
+            <!-- Solid ring -->
+            <circle cx="70" cy="70" r="54" stroke="rgba(212,175,80,0.45)" stroke-width="1.2" fill="none" />
+
+            <!-- sunburst rays behind star -->
+            <g opacity="0.35">
+              <line x1="70" y1="10" x2="70" y2="22" stroke="#f0c84a" stroke-width="1.5" stroke-linecap="round" />
+              <line x1="70" y1="118" x2="70" y2="130" stroke="#f0c84a" stroke-width="1.5" stroke-linecap="round" />
+              <line x1="10" y1="70" x2="22" y2="70" stroke="#f0c84a" stroke-width="1.5" stroke-linecap="round" />
+              <line x1="118" y1="70" x2="130" y2="70" stroke="#f0c84a" stroke-width="1.5" stroke-linecap="round" />
+              <line x1="23" y1="23" x2="31" y2="31" stroke="#f0c84a" stroke-width="1.2" stroke-linecap="round" />
+              <line x1="109" y1="109" x2="117" y2="117" stroke="#f0c84a" stroke-width="1.2" stroke-linecap="round" />
+              <line x1="117" y1="23" x2="109" y2="31" stroke="#f0c84a" stroke-width="1.2" stroke-linecap="round" />
+              <line x1="23" y1="117" x2="31" y2="109" stroke="#f0c84a" stroke-width="1.2" stroke-linecap="round" />
+            </g>
+
+            <!-- Star glow bloom -->
+            <circle cx="70" cy="70" r="32" fill="url(#sg2)" opacity="0.7" />
+
+            <!-- 5-point star main shape -->
+            <path d="M70 22
+              L77.5 48.5 L105 48.5
+              L83 64.5 L91 90.5
+              L70 75 L49 90.5
+              L57 64.5 L35 48.5
+              L62.5 48.5 Z" fill="url(#sg1)" stroke="rgba(255,240,180,0.5)" stroke-width="0.8"
+              stroke-linejoin="round" />
+
+            <!-- Star inner highlight -->
+            <path d="M70 28 L76 50 L70 75" stroke="rgba(255,255,220,0.35)" stroke-width="0.7" fill="none" />
+
+            <!-- Diamond accents at cardinal points -->
+            <path d="M70 5 L72.5 10 L70 15 L67.5 10Z" fill="#f0c84a" opacity="0.8" />
+            <path d="M70 125 L72.5 130 L70 135 L67.5 130Z" fill="#f0c84a" opacity="0.8" />
+            <path d="M5 70 L10 72.5 L15 70 L10 67.5Z" fill="#f0c84a" opacity="0.8" />
+            <path d="M125 70 L130 72.5 L135 70 L130 67.5Z" fill="#f0c84a" opacity="0.8" />
+
+            <!-- Small dot accents between diamonds -->
+            <circle cx="43" cy="20" r="1.8" fill="rgba(240,200,74,0.6)" />
+            <circle cx="97" cy="20" r="1.8" fill="rgba(240,200,74,0.6)" />
+            <circle cx="43" cy="120" r="1.8" fill="rgba(240,200,74,0.6)" />
+            <circle cx="97" cy="120" r="1.8" fill="rgba(240,200,74,0.6)" />
           </svg>
         </div>
-        <div class="philo-inner">
+
+        <!-- Text label at bottom -->
+        <div class="philo-inner"
+          style="background:linear-gradient(to top,rgba(60,35,5,0.82) 0%,rgba(40,22,2,0.45) 55%,transparent 85%);">
           <div class="philo-tag">Chất lượng</div>
           <div class="philo-title">Cao Cấp</div>
         </div>
       </div>
     </div>
   </section>
-
   <!-- PRODUCTS -->
   <section class="products" id="products">
     <div class="products-header reveal">
@@ -3606,18 +3984,26 @@
       <h2>Sản Phẩm Mộc Trầu</h2>
       <p>Mỗi sản phẩm là sự kết tinh của thiên nhiên và khoa học hiện đại</p>
     </div>
+
+    <!-- CATEGORY FILTERS -->
+    <div class="product-filters reveal">
+      <button class="filter-btn active" data-filter="all">Tất cả</button>
+      <button class="filter-btn" data-filter="cleansing">Làm Sạch</button>
+      <button class="filter-btn" data-filter="skincare">Dưỡng Da</button>
+      <button class="filter-btn" data-filter="body">Cơ Thể</button>
+    </div>
+
     <div class="products-grid">
 
-      <!-- Product 1 - Featured: Botanical Micellar Cleansing Water -->
-      <div class="product-card featured reveal">
+      <!-- Product 1 - Featured: Nước Tẩy Trang Trầu Không -->
+      <div class="product-card featured reveal" data-category="cleansing">
         <div class="product-img" style="background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);">
-          <img src="images/z7796173775557_c56f30f6afef167b21aec95a61f9487a.jpg" alt="Botanical Micellar Cleansing Water"
-            style="object-position: center top;">
+          <img src="images/z7796173775557_c56f30f6afef167b21aec95a61f9487a.jpg" alt="Nước Tẩy Trang Trầu Không">
           <div class="product-tag">Bán chạy</div>
           <div class="sale-badge">-15%</div>
         </div>
         <div class="product-info">
-          <div class="product-name">Botanical Micellar Cleansing Water</div>
+          <div class="product-name">Nước Tẩy Trang Trầu Không</div>
           <div class="product-desc">Nước tẩy trang thực vật chiết xuất từ lá trầu không. Làm sạch nhẹ nhàng, cân bằng
             da, không gây kích ứng.</div>
           <div class="product-benefits">
@@ -3628,20 +4014,20 @@
           </div>
           <div class="product-footer">
             <div class="product-price"><span class="price-old">179.000đ</span>149.000đ <span>/ 150ml</span></div>
-            <button class="add-btn" onclick="addToCart('Botanical Micellar Cleansing Water')">+</button>
+            <button class="add-btn" onclick="addToCart('Nước Tẩy Trang Trầu Không')">+</button>
           </div>
         </div>
       </div>
 
-      <!-- Product 2: Soothing Cleanser -->
-      <div class="product-card reveal">
+      <!-- Product 2: Sữa Rửa Mặt Dịu Nhẹ -->
+      <div class="product-card reveal" data-category="cleansing">
         <div class="product-img" style="background: linear-gradient(135deg, #f1f8e9 0%, #dcedc8 100%);">
-          <img src="images/z7796173777382_71af9a1f8c619ccf67a292e655e6d8e2.jpg" alt="Soothing Cleanser">
+          <img src="images/z7796173777382_71af9a1f8c619ccf67a292e655e6d8e2.jpg" alt="Sữa Rửa Mặt Dịu Nhẹ">
           <div class="sale-badge">-10%</div>
         </div>
         <div class="product-info">
-          <div class="product-name">Soothing Cleanser</div>
-          <div class="product-desc">Sữa rửa mặt dịu nhẹ – Calm · Hydrate · Minimize Pores. Chiết xuất trầu không thuần
+          <div class="product-name">Sữa Rửa Mặt Dịu Nhẹ</div>
+          <div class="product-desc">Sữa Rửa Mặt Dịu Nhẹ – Calm · Hydrate · Minimize Pores. Chiết xuất trầu không thuần
             khiết.</div>
           <div class="product-benefits">
             <span class="benefit-tag">Calm</span>
@@ -3650,20 +4036,20 @@
           </div>
           <div class="product-footer">
             <div class="product-price"><span class="price-old">165.000đ</span>139.000đ <span>/ 250ml</span></div>
-            <button class="add-btn" onclick="addToCart('Soothing Cleanser')">+</button>
+            <button class="add-btn" onclick="addToCart('Sữa Rửa Mặt Dịu Nhẹ')">+</button>
           </div>
         </div>
       </div>
 
-      <!-- Product 3: Detox Mask -->
-      <div class="product-card reveal">
+      <!-- Product 3: Mặt Nạ Thải Độc -->
+      <div class="product-card reveal" data-category="skincare">
         <div class="product-img" style="background: linear-gradient(135deg, #f9f6f0 0%, #ede8de 100%);">
-          <img src="images/z7796173775558_a59171635cf63e5bfc49a0f47281b102.jpg" alt="Detox Mask">
+          <img src="images/z7796173775558_a59171635cf63e5bfc49a0f47281b102.jpg" alt="Mặt Nạ Thải Độc">
           <div class="product-tag" style="background:var(--green-mid)">Mới</div>
         </div>
         <div class="product-info">
-          <div class="product-name">Detox Mask</div>
-          <div class="product-desc">Mặt nạ thải độc với chiết xuất thảo dược lá trầu. Purify – Soothe – Brighten Skin.
+          <div class="product-name">Mặt Nạ Thải Độc</div>
+          <div class="product-desc">Mặt Nạ Thải Độc với chiết xuất thảo dược lá trầu. Purify – Soothe – Brighten Skin.
           </div>
           <div class="product-benefits">
             <span class="benefit-tag">Purify</span>
@@ -3672,13 +4058,13 @@
           </div>
           <div class="product-footer">
             <div class="product-price"><span class="price-old">215.000đ</span>179.000đ <span>/ 80ml</span></div>
-            <button class="add-btn" onclick="addToCart('Detox Mask')">+</button>
+            <button class="add-btn" onclick="addToCart('Mặt Nạ Thải Độc')">+</button>
           </div>
         </div>
       </div>
 
       <!-- Product 4: Body Wash -->
-      <div class="product-card reveal">
+      <div class="product-card reveal" data-category="body">
         <div class="product-img" style="background: linear-gradient(135deg, #f0f4ec 0%, #dde8d5 100%);">
           <img src="images/z7796173794385_183c45728de6f780f41eb675931ecc16.jpg" alt="Sữa tắm lá trầu">
         </div>
@@ -3697,14 +4083,14 @@
         </div>
       </div>
 
-      <!-- Product 5: Spot Treatment -->
-      <div class="product-card reveal">
+      <!-- Product 5: Tinh Chất Chấm Mụn -->
+      <div class="product-card reveal" data-category="skincare">
         <div class="product-img" style="background: linear-gradient(135deg, #f3f8f0 0%, #e2eedb 100%);">
-          <img src="images/z7796173785993_b75c945324a5e94b77345b374b302175.jpg" alt="Spot Treatment">
+          <img src="images/z7796173785993_b75c945324a5e94b77345b374b302175.jpg" alt="Tinh Chất Chấm Mụn">
           <div class="product-tag" style="background:var(--gold)">Hot</div>
         </div>
         <div class="product-info">
-          <div class="product-name">Spot Treatment</div>
+          <div class="product-name">Tinh Chất Chấm Mụn</div>
           <div class="product-desc">Trị mụn điểm với chiết xuất lá trầu. Clear Blemishes · Calm Redness · Balance Oil.
           </div>
           <div class="product-benefits">
@@ -3713,7 +4099,7 @@
           </div>
           <div class="product-footer">
             <div class="product-price"><span class="price-old">189.000đ</span>159.000đ <span>/ 30ml</span></div>
-            <button class="add-btn" onclick="addToCart('Spot Treatment')">+</button>
+            <button class="add-btn" onclick="addToCart('Tinh Chất Chấm Mụn')">+</button>
           </div>
         </div>
       </div>
@@ -3742,7 +4128,7 @@
           </div>
           <div class="combo-plus">+</div>
           <div class="product-thumb">
-            <img src="images/z7796173777382_71af9a1f8c619ccf67a292e655e6d8e2.jpg" alt="Soothing Cleanser">
+            <img src="images/z7796173777382_71af9a1f8c619ccf67a292e655e6d8e2.jpg" alt="Sữa Rửa Mặt Dịu Nhẹ">
           </div>
         </div>
         <div class="combo-body">
@@ -3754,7 +4140,7 @@
               <div class="combo-item-dot"></div>Cleansing Water 150ml
             </div>
             <div class="combo-item-row">
-              <div class="combo-item-dot"></div>Soothing Cleanser 250ml
+              <div class="combo-item-dot"></div>Sữa Rửa Mặt Dịu Nhẹ 250ml
             </div>
           </div>
           <div class="combo-pricing">
@@ -3764,10 +4150,10 @@
           <div class="combo-save-tag">🔖 Tiết kiệm 39.000đ (-14%)</div>
           <div class="combo-gift">
             <div class="combo-gift-icon">🎁</div>
-            <div>Tặng kèm <strong>túi vải Mộc Trầu</strong> cao cấp + mẫu thử Spot Treatment</div>
+            <div>Tặng kèm <strong>túi vải Mộc Trầu</strong> cao cấp + mẫu thử Tinh Chất Chấm Mụn</div>
           </div>
           <button class="combo-btn"
-            onclick="addComboToCart('Combo Làm Sạch', 249000, ['Cleansing Water 150ml','Soothing Cleanser 250ml'])">Mua
+            onclick="addComboToCart('Combo Làm Sạch', 249000, ['Cleansing Water 150ml','Sữa Rửa Mặt Dịu Nhẹ 250ml'])">Mua
             Combo Ngay</button>
         </div>
       </div>
@@ -3781,11 +4167,11 @@
           </div>
           <div class="combo-plus">+</div>
           <div class="product-thumb">
-            <img src="images/z7796173775558_a59171635cf63e5bfc49a0f47281b102.jpg" alt="Detox Mask">
+            <img src="images/z7796173775558_a59171635cf63e5bfc49a0f47281b102.jpg" alt="Mặt Nạ Thải Độc">
           </div>
           <div class="combo-plus">+</div>
           <div class="product-thumb">
-            <img src="images/z7796173785993_b75c945324a5e94b77345b374b302175.jpg" alt="Spot Treatment">
+            <img src="images/z7796173785993_b75c945324a5e94b77345b374b302175.jpg" alt="Tinh Chất Chấm Mụn">
           </div>
         </div>
         <div class="combo-body">
@@ -3797,10 +4183,10 @@
               <div class="combo-item-dot"></div>Cleansing Water 150ml
             </div>
             <div class="combo-item-row">
-              <div class="combo-item-dot"></div>Detox Mask 80ml
+              <div class="combo-item-dot"></div>Mặt Nạ Thải Độc 80ml
             </div>
             <div class="combo-item-row">
-              <div class="combo-item-dot"></div>Spot Treatment 30ml
+              <div class="combo-item-dot"></div>Tinh Chất Chấm Mụn 30ml
             </div>
           </div>
           <div class="combo-pricing">
@@ -3813,7 +4199,7 @@
             <div>Tặng kèm <strong>hộp quà Mộc Trầu</strong> + mặt nạ giấy trầu không 5 miếng</div>
           </div>
           <button class="combo-btn"
-            onclick="addComboToCart('Combo Trị Mụn Chuyên Sâu', 420000, ['Cleansing Water','Detox Mask','Spot Treatment'])">Mua
+            onclick="addComboToCart('Combo Trị Mụn Chuyên Sâu', 420000, ['Cleansing Water','Mặt Nạ Thải Độc','Tinh Chất Chấm Mụn'])">Mua
             Combo Ngay</button>
         </div>
       </div>
@@ -3822,7 +4208,7 @@
       <div class="combo-card reveal">
         <div class="combo-img-strip">
           <div class="product-thumb">
-            <img src="images/z7796173777382_71af9a1f8c619ccf67a292e655e6d8e2.jpg" alt="Soothing Cleanser">
+            <img src="images/z7796173777382_71af9a1f8c619ccf67a292e655e6d8e2.jpg" alt="Sữa Rửa Mặt Dịu Nhẹ">
           </div>
           <div class="combo-plus">+</div>
           <div class="product-thumb">
@@ -3830,7 +4216,7 @@
           </div>
           <div class="combo-plus">+</div>
           <div class="product-thumb">
-            <img src="images/z7796173775558_a59171635cf63e5bfc49a0f47281b102.jpg" alt="Detox Mask">
+            <img src="images/z7796173775558_a59171635cf63e5bfc49a0f47281b102.jpg" alt="Mặt Nạ Thải Độc">
           </div>
         </div>
         <div class="combo-body">
@@ -3839,13 +4225,13 @@
             người mới bắt đầu với skincare sạch.</div>
           <div class="combo-includes">
             <div class="combo-item-row">
-              <div class="combo-item-dot"></div>Soothing Cleanser 250ml
+              <div class="combo-item-dot"></div>Sữa Rửa Mặt Dịu Nhẹ 250ml
             </div>
             <div class="combo-item-row">
               <div class="combo-item-dot"></div>Sữa Tắm Lá Trầu 400ml
             </div>
             <div class="combo-item-row">
-              <div class="combo-item-dot"></div>Detox Mask 80ml
+              <div class="combo-item-dot"></div>Mặt Nạ Thải Độc 80ml
             </div>
           </div>
           <div class="combo-pricing">
@@ -3858,7 +4244,7 @@
             <div>Tặng kèm <strong>bộ khăn mặt bamboo</strong> + thẻ tư vấn da miễn phí</div>
           </div>
           <button class="combo-btn"
-            onclick="addComboToCart('Combo Chăm Sóc Toàn Thân', 385000, ['Soothing Cleanser','Sữa Tắm Lá Trầu','Detox Mask'])">Mua
+            onclick="addComboToCart('Combo Chăm Sóc Toàn Thân', 385000, ['Sữa Rửa Mặt Dịu Nhẹ','Sữa Tắm Lá Trầu','Mặt Nạ Thải Độc'])">Mua
             Combo Ngay</button>
         </div>
       </div>
@@ -4063,7 +4449,8 @@
       </div>
       <div class="testi-card reveal">
         <div class="testi-stars">★★★★★</div>
-        <div class="testi-text">"Giá hợp lý mà chất lượng rất tốt. Detox Mask là sản phẩm mình mê nhất, da sáng và sạch
+        <div class="testi-text">"Giá hợp lý mà chất lượng rất tốt. Mặt Nạ Thải Độc là sản phẩm mình mê nhất, da sáng và
+          sạch
           sau mỗi lần đắp mặt."</div>
         <div class="testi-author">
           <div class="testi-avatar">M</div>
@@ -4163,10 +4550,10 @@
         <h4>Sản phẩm</h4>
         <ul>
           <li><a href="#" onclick="event.preventDefault();openProductModal(products[0])">Cleansing Water</a></li>
-          <li><a href="#" onclick="event.preventDefault();openProductModal(products[1])">Soothing Cleanser</a></li>
-          <li><a href="#" onclick="event.preventDefault();openProductModal(products[2])">Detox Mask</a></li>
+          <li><a href="#" onclick="event.preventDefault();openProductModal(products[1])">Sữa Rửa Mặt Dịu Nhẹ</a></li>
+          <li><a href="#" onclick="event.preventDefault();openProductModal(products[2])">Mặt Nạ Thải Độc</a></li>
           <li><a href="#" onclick="event.preventDefault();openProductModal(products[3])">Sữa Tắm Lá Trầu</a></li>
-          <li><a href="#" onclick="event.preventDefault();openProductModal(products[4])">Spot Treatment</a></li>
+          <li><a href="#" onclick="event.preventDefault();openProductModal(products[4])">Tinh Chất Chấm Mụn</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -4191,7 +4578,7 @@
       <div class="footer-col">
         <h4>Địa chỉ liên hệ</h4>
         <ul>
-          <li><a href="https://maps.google.com/?q=Ha+Noi+Viet+Nam" target="_blank">📍 Hà Nội, Việt Nam</a></li>
+          <li><a href="https://maps.google.com/?q=Ha+Noi+Viet+Nam" target="_blank">Hà Nội, Việt Nam</a></li>
           <li><a href="tel:1800xxxx">📞 1800 xxxx</a></li>
           <li><a href="mailto:hello@moctrau.vn">✉ hello@moctrau.vn</a></li>
           <li><a href="#" onclick="event.preventDefault();openInfoModal('recruit')">👤 Tuyển dụng</a></li>
@@ -4273,7 +4660,7 @@
       <div id="checkoutForm">
         <div class="section-label">Đặt hàng</div>
         <h2>Thông Tin Thanh Toán</h2>
-        <div class="checkout-summary" id="checkoutSummary"></div>
+        <div class="checkout-summary" id="checkoutsummary"></div>
         <form class="checkout-form" onsubmit="submitOrder(event)">
           <div class="form-row">
             <div class="form-group">
@@ -4341,7 +4728,7 @@
           <button type="submit" class="checkout-submit-btn">✓ Xác nhận đặt hàng</button>
         </form>
       </div>
-      <div class="checkout-success" id="checkoutSuccess">
+      <div class="checkout-success" id="checkoutsuccess">
         <div class="checkout-success-icon">🎉</div>
         <h3>Đặt hàng thành công!</h3>
         <p>Cảm ơn bạn đã tin tưởng Mộc Trầu.<br>Chúng tôi sẽ liên hệ xác nhận đơn hàng trong vòng 30 phút.</p>
@@ -4367,15 +4754,16 @@
         nguyên nhân chính gây mụn viêm.</div>
       <h3>💧 Cách Chăm Sóc Da Đúng Cách</h3>
       <ul>
-        <li>Làm sạch da 2 lần/ngày bằng sữa rửa mặt dịu nhẹ</li>
+        <li>Làm sạch da 2 lần/ngày bằng Sữa Rửa Mặt Dịu Nhẹ</li>
         <li>Không dùng nước nóng để rửa mặt — nước ấm hoặc mát là lý tưởng</li>
         <li>Thoa kem dưỡng ẩm ngay sau khi rửa mặt, khi da còn hơi ẩm</li>
         <li>Dùng kem chống nắng SPF30+ mỗi buổi sáng dù trời không nắng</li>
         <li>Tẩy tế bào chết nhẹ nhàng 1–2 lần/tuần</li>
       </ul>
       <h3>🌙 Routine Tối Cho Da Hỗn Hợp</h3>
-      <p>Bước 1: Cleansing Water Mộc Trầu tẩy trang. Bước 2: Sữa rửa mặt Soothing Cleanser. Bước 3: Toner cân bằng. Bước
-        4: Serum hoặc Spot Treatment nếu có mụn. Bước 5: Kem dưỡng ẩm nhẹ.</p>
+      <p>Bước 1: Cleansing Water Mộc Trầu tẩy trang. Bước 2: Sữa rửa mặt Sữa Rửa Mặt Dịu Nhẹ. Bước 3: Toner cân bằng.
+        Bước
+        4: Serum hoặc Tinh Chất Chấm Mụn nếu có mụn. Bước 5: Kem dưỡng ẩm nhẹ.</p>
     </div>
 
     <!-- FAQ -->
@@ -4387,7 +4775,8 @@
       <p>Có. Tất cả sản phẩm Mộc Trầu được formulate không chứa paraben, sulfate, hương liệu tổng hợp. Đã test da nhạy
         cảm và đạt chứng nhận dermatologist-tested.</p>
       <h3>Thời gian thấy hiệu quả?</h3>
-      <p>Đa số khách hàng thấy da mịn hơn sau 7–10 ngày. Với mụn viêm, Spot Treatment cho hiệu quả rõ nhất sau 3–5 ngày
+      <p>Đa số khách hàng thấy da mịn hơn sau 7–10 ngày. Với mụn viêm, Tinh Chất Chấm Mụn cho hiệu quả rõ nhất sau 3–5
+        ngày
         sử dụng liên tục.</p>
       <h3>Sản phẩm có hạn sử dụng bao lâu?</h3>
       <ul>
@@ -4506,21 +4895,21 @@
       <h3>🫧 Da Dầu & Da Hỗn Hợp</h3>
       <ul>
         <li><strong>Cleansing Water:</strong> Tẩy trang nhẹ, kiểm soát dầu tốt</li>
-        <li><strong>Spot Treatment:</strong> Xử lý mụn đầu đen, thu nhỏ lỗ chân lông</li>
-        <li><strong>Detox Mask:</strong> Dùng 2–3 lần/tuần để thải độc sâu</li>
+        <li><strong>Tinh Chất Chấm Mụn:</strong> Xử lý mụn đầu đen, thu nhỏ lỗ chân lông</li>
+        <li><strong>Mặt Nạ Thải Độc:</strong> Dùng 2–3 lần/tuần để thải độc sâu</li>
       </ul>
       <h3>🌸 Da Khô & Da Nhạy Cảm</h3>
       <ul>
-        <li><strong>Soothing Cleanser:</strong> Sữa rửa mặt dịu nhẹ, không kéo căng da</li>
+        <li><strong>Sữa Rửa Mặt Dịu Nhẹ:</strong> Sữa Rửa Mặt Dịu Nhẹ, không kéo căng da</li>
         <li><strong>Sữa Tắm Lá Trầu:</strong> Dưỡng ẩm toàn thân, hương thơm dịu tự nhiên</li>
       </ul>
       <h3>🌿 Da Mụn</h3>
       <ul>
-        <li><strong>Spot Treatment</strong> ban đêm trực tiếp lên nốt mụn</li>
+        <li><strong>Tinh Chất Chấm Mụn</strong> ban đêm trực tiếp lên nốt mụn</li>
         <li><strong>Cleansing Water</strong> buổi sáng để giảm vi khuẩn</li>
-        <li><strong>Detox Mask</strong> 1 lần/tuần để ngăn ngừa mụn mới</li>
+        <li><strong>Mặt Nạ Thải Độc</strong> 1 lần/tuần để ngăn ngừa mụn mới</li>
       </ul>
-      <div class="highlight-box">💬 Không chắc chọn gì? Chat với chuyên gia da liễu Mộc Trầu qua Zalo: 0912 xxx xxx
+      <div class="highlight-box">Nếu không chắc chắn gì? Chat với chuyên gia da liễu Mộc Trầu qua Zalo: 0912 xxx xxx
         (miễn phí tư vấn)</div>
     </div>
 
@@ -4552,12 +4941,18 @@
 
   </div>
 
+  <!-- TOAST NOTIFICATION -->
+  <div class="cart-notif" id="cartNotif">
+    <div class="cart-notif-icon">✨</div>
+    <div id="cartMsg">Đã thêm vào giỏ hàng!</div>
+  </div>
+
   <script>
     // ── PRODUCT DATA ──
     const products = [
       {
         id: 1,
-        name: 'Botanical Micellar Cleansing Water',
+        name: 'Nước Tẩy Trang Trầu Không',
         tag: 'Bán chạy',
         price: 149000,
         priceText: '149.000đ',
@@ -4575,14 +4970,14 @@
       },
       {
         id: 2,
-        name: 'Soothing Cleanser',
+        name: 'Sữa Rửa Mặt Dịu Nhẹ',
         tag: 'Sữa rửa mặt',
         price: 139000,
         priceText: '139.000đ',
         volume: '250ml',
         img: 'images/z7796173777382_71af9a1f8c619ccf67a292e655e6d8e2.jpg',
         bg: 'linear-gradient(135deg,#f1f8e9,#dcedc8)',
-        desc: 'Sữa rửa mặt dịu nhẹ chiết xuất trầu không thuần khiết. Làm sạch sâu, dịu da, thu nhỏ lỗ chân lông và cấp ẩm tức thì.',
+        desc: 'Sữa Rửa Mặt Dịu Nhẹ chiết xuất trầu không thuần khiết. Làm sạch sâu, dịu da, thu nhỏ lỗ chân lông và cấp ẩm tức thì.',
         details: [
           { label: 'Dung tích', value: '250ml' },
           { label: 'Da phù hợp', value: 'Da hỗn hợp, da dầu, da thường' },
@@ -4593,14 +4988,14 @@
       },
       {
         id: 3,
-        name: 'Detox Mask',
+        name: 'Mặt Nạ Thải Độc',
         tag: 'Mới ra mắt',
         price: 179000,
         priceText: '179.000đ',
         volume: '80ml',
         img: 'images/z7796173775558_a59171635cf63e5bfc49a0f47281b102.jpg',
         bg: 'linear-gradient(135deg,#f9f6f0,#ede8de)',
-        desc: 'Mặt nạ thải độc cao cấp với chiết xuất thảo dược lá trầu. Giải phóng lỗ chân lông, làm sạch sâu, sáng da sau mỗi lần sử dụng.',
+        desc: 'Mặt Nạ Thải Độc cao cấp với chiết xuất thảo dược lá trầu. Giải phóng lỗ chân lông, làm sạch sâu, sáng da sau mỗi lần sử dụng.',
         details: [
           { label: 'Dung tích', value: '80ml' },
           { label: 'Tần suất', value: 'Dùng 2-3 lần/tuần' },
@@ -4629,7 +5024,7 @@
       },
       {
         id: 5,
-        name: 'Spot Treatment',
+        name: 'Tinh Chất Chấm Mụn',
         tag: 'Hot',
         price: 159000,
         priceText: '159.000đ',
@@ -4828,7 +5223,7 @@
     function openCheckout() {
       closeCart();
       // Build summary
-      const summary = document.getElementById('checkoutSummary');
+      const summary = document.getElementById('checkoutsummary');
       const total = cart.reduce((s, i) => s + i.price * i.qty, 0);
       summary.innerHTML = cart.map(item =>
         `<div class="checkout-summary-item">
@@ -4840,8 +5235,8 @@
       <span>Tổng cộng</span>
       <span>${total.toLocaleString('vi-VN')}đ</span>
     </div>`;
-      document.getElementById('checkoutSuccess').style.display = 'none';
-      document.getElementById('checkoutSuccess').classList.remove('show');
+      document.getElementById('checkoutsuccess').style.display = 'none';
+      document.getElementById('checkoutsuccess').classList.remove('show');
       document.getElementById('checkoutForm').style.display = 'block';
       document.getElementById('checkoutModal').classList.add('active');
       document.getElementById('overlay').classList.add('active');
@@ -4857,7 +5252,7 @@
     function submitOrder(e) {
       e.preventDefault();
       document.getElementById('checkoutForm').style.display = 'none';
-      const success = document.getElementById('checkoutSuccess');
+      const success = document.getElementById('checkoutsuccess');
       success.style.display = 'flex';
       success.classList.add('show');
     }
@@ -4879,6 +5274,32 @@
     }, { threshold: 0.1 });
     reveals.forEach(el => observer.observe(el));
 
+    // ── CATEGORY FILTERING ──
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const productCards = document.querySelectorAll('.products-grid .product-card');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Update active class
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const filterValue = btn.getAttribute('data-filter');
+
+        productCards.forEach(card => {
+          const category = card.getAttribute('data-category');
+          if (filterValue === 'all' || filterValue === category) {
+            card.style.display = 'flex';
+            // Re-trigger animation
+            card.style.animation = 'none';
+            card.offsetHeight; // trigger reflow
+            card.style.animation = null;
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
     // ── CTA FORM ──
     document.querySelector('.cta-form button').addEventListener('click', () => {
       const input = document.querySelector('.cta-form input');
@@ -4957,6 +5378,24 @@
         if (!links.contains(e.target) && !btn.contains(e.target)) closeMobileMenu();
       }
     });
+    // ── NAV SCROLL SHRINK ──
+    (function () {
+      const nav = document.querySelector('nav');
+      let ticking = false;
+      window.addEventListener('scroll', function () {
+        if (!ticking) {
+          requestAnimationFrame(function () {
+            if (window.scrollY > 60) {
+              nav.classList.add('scrolled');
+            } else {
+              nav.classList.remove('scrolled');
+            }
+            ticking = false;
+          });
+          ticking = true;
+        }
+      }, { passive: true });
+    })();
   </script>
 </body>
 
