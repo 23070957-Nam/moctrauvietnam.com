@@ -4014,7 +4014,7 @@
           </div>
           <div class="product-footer">
             <div class="product-price"><span class="price-old">179.000đ</span>149.000đ <span>/ 150ml</span></div>
-            <button class="add-btn" onclick="addToCart('Nước Tẩy Trang Trầu Không')">+</button>
+            <button class="add-btn" onclick="addToCartById(1)">+</button>
           </div>
         </div>
       </div>
@@ -4036,7 +4036,7 @@
           </div>
           <div class="product-footer">
             <div class="product-price"><span class="price-old">165.000đ</span>139.000đ <span>/ 250ml</span></div>
-            <button class="add-btn" onclick="addToCart('Sữa Rửa Mặt Dịu Nhẹ')">+</button>
+            <button class="add-btn" onclick="addToCartById(2)">+</button>
           </div>
         </div>
       </div>
@@ -4058,7 +4058,7 @@
           </div>
           <div class="product-footer">
             <div class="product-price"><span class="price-old">215.000đ</span>179.000đ <span>/ 80ml</span></div>
-            <button class="add-btn" onclick="addToCart('Mặt Nạ Thải Độc')">+</button>
+            <button class="add-btn" onclick="addToCartById(3)">+</button>
           </div>
         </div>
       </div>
@@ -4078,7 +4078,7 @@
           </div>
           <div class="product-footer">
             <div class="product-price"><span class="price-old">155.000đ</span>129.000đ <span>/ 400ml</span></div>
-            <button class="add-btn" onclick="addToCart('Sữa Tắm Lá Trầu')">+</button>
+            <button class="add-btn" onclick="addToCartById(4)">+</button>
           </div>
         </div>
       </div>
@@ -4099,7 +4099,7 @@
           </div>
           <div class="product-footer">
             <div class="product-price"><span class="price-old">189.000đ</span>159.000đ <span>/ 30ml</span></div>
-            <button class="add-btn" onclick="addToCart('Tinh Chất Chấm Mụn')">+</button>
+            <button class="add-btn" onclick="addToCartById(5)">+</button>
           </div>
         </div>
       </div>
@@ -5102,7 +5102,14 @@
     }
 
     // ── CART ──
+    function addToCartById(id, qty = 1) {
+      const product = products.find(p => p.id === id);
+      if (!product) return;
+      addToCart(product.name, product, qty);
+    }
+
     function addToCart(name, product, qty = 1) {
+      if (!product || !product.id) return;
       const existing = cart.find(i => i.id === product.id);
       if (existing) {
         existing.qty += qty;
@@ -5141,13 +5148,15 @@
       const empty = document.getElementById('cartEmpty');
       const footer = document.getElementById('cartFooter');
       if (cart.length === 0) {
-        container.innerHTML = '';
-        container.appendChild(empty);
-        empty.style.display = 'flex';
+        // Chỉ xóa các .cart-item, giữ lại #cartEmpty trong DOM
+        container.querySelectorAll('.cart-item').forEach(el => el.remove());
+        if (empty) empty.style.display = 'flex';
         footer.style.display = 'none';
       } else {
-        empty.style.display = 'none';
-        container.innerHTML = cart.map(item => `
+        if (empty) empty.style.display = 'none';
+        // Xóa các .cart-item cũ rồi render lại
+        container.querySelectorAll('.cart-item').forEach(el => el.remove());
+        container.insertAdjacentHTML('beforeend', cart.map(item => `
         <div class="cart-item">
           <div class="cart-item-img">
             <img src="${item.img}" alt="${item.name}">
@@ -5163,7 +5172,7 @@
           </div>
           <button class="cart-item-remove" onclick="removeFromCart(${item.id})" title="Xóa">✕</button>
         </div>
-      `).join('');
+      `).join(''));
         footer.style.display = 'flex';
         footer.style.flexDirection = 'column';
       }
